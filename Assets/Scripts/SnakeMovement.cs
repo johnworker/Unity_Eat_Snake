@@ -11,6 +11,8 @@ namespace Lancelot
 
         public float mindistance = 0.25f;
 
+        public int beginsize;
+
         public float speed = 1;
         public float rotationspeed = 50;
 
@@ -23,7 +25,10 @@ namespace Lancelot
         // Start is called before the first frame update
         void Start()
         {
-
+            for (int i = 0; i < beginsize - 1; i++)
+            {
+                AddBodyPart();
+            }
         }
 
         // Update is called once per frame
@@ -54,6 +59,13 @@ namespace Lancelot
                 Vector3 newpos = PrevBodyPart.position;
 
                 newpos.y = BodyParts[0].position.y;
+
+                float T = Time.deltaTime * dis / mindistance * curspeed;
+
+                if (T > 0.5f)
+                    T = 0.5f;
+                curBodyPart.position = Vector3.Slerp(curBodyPart.position, newpos, T);
+                curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, PrevBodyPart.rotation, T);
             }
         }
 
