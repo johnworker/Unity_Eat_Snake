@@ -2,30 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ThirdPersonCamera : MonoBehaviour
+namespace Lancelot
 {
-
-    public float speed = 1;
-    public Transform Target;
-    public Camera cam;
-
-    void LateUpdate()
+    public class ThirdPersonCamera : MonoBehaviour
     {
-        Move();
-    }
 
-    public void Move()
-    {
-        Vector3 direction = (Target.position - cam.transform.position).normalized;
+        public float speed = 1;
+        public Transform Target;
+        public Camera cam;
 
-        Quaternion lookrotation = Quaternion.LookRotation(direction);
+        void LateUpdate()
+        {
+            Move();
+        }
 
-        lookrotation.x = transform.rotation.x;
-        lookrotation.z = transform.rotation.z;
+        public void Move()
+        {
+            Vector3 direction = (Target.position - cam.transform.position).normalized;
 
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, Time.deltaTime * 100);
+            Quaternion lookrotation = Quaternion.LookRotation(direction);
 
-        transform.position = Vector3.Slerp(transform.position, Target.position, Time.deltaTime * speed);
+            lookrotation.x = transform.rotation.x;
+            lookrotation.z = transform.rotation.z;
 
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, Time.deltaTime * 100);
+
+            transform.position = Vector3.Slerp(transform.position, Target.position, Time.deltaTime * speed);
+
+        }
     }
 }
