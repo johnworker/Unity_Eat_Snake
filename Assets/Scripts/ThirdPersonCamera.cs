@@ -11,7 +11,7 @@ public class ThirdPersonCamera : MonoBehaviour
 
     void LateUpdate()
     {
-        
+        Move();
     }
 
     public void Move()
@@ -19,5 +19,13 @@ public class ThirdPersonCamera : MonoBehaviour
         Vector3 direction = (Target.position - cam.transform.position).normalized;
 
         Quaternion lookrotation = Quaternion.LookRotation(direction);
+
+        lookrotation.x = transform.rotation.x;
+        lookrotation.z = transform.rotation.z;
+
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookrotation, Time.deltaTime * 100);
+
+        transform.position = Vector3.Slerp(transform.position, Target.position, Time.deltaTime * speed);
+
     }
 }
