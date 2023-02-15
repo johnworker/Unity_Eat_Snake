@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 namespace Lancelot
 {
@@ -16,39 +18,81 @@ namespace Lancelot
         public float speed = 1;
         public float rotationspeed = 50;
 
+        public float TimeFromLastRetry;
+
         public GameObject bodyprefab;
+
+        public TextMeshProUGUI CurrentScore;
+        public TextMeshProUGUI ScoreText;
+
+        public GameObject DeadScreen;
 
         private float dis;
         private Transform curBodyPart;
         private Transform PrevBodyPart;
 
-        // Start is called before the first frame update
+        public bool IsAlive;
+
+
         void Start()
         {
-            for (int i = 0; i < beginsize - 1; i++)
-            {
-                AddBodyPart();
-            }
+            StartLevel();
         }
 
-        // Update is called once per frame
         void Update()
         {
-            Move();
+            if (IsAlive)
+                Move();
 
             if (Input.GetKey(KeyCode.Q))
                 AddBodyPart();
         }
 
+        public void StartLevel()
+        {
+            TimeFromLastRetry = Time.time;
+
+            DeadScreen.SetActive(false);
+
+            for (int i = BodyParts.Count - 1; i > 1; i--)
+            {
+                Destroy(BodyParts[i].gameObject);
+
+                BodyParts.Remove(BodyParts[i]);
+            }
+
+            BodyParts[0].position = new Vector3(0, 0.5f, 0);
+
+            BodyParts[0].rotation = Quaternion.identity;
+
+            CurrentScore.gameObject.SetActive(true);
+
+            CurrentScore.text = "Score: 0";
+
+            IsAlive = true;
+
+            for (int i = 0; i < beginsize; i++)
+            {
+                AddBodyPart();
+            }
+
+            BodyParts[0].position = new Vector3(2, 0.5f, 0);
+        }
+
         public void Move()
         {
+            // 定義 當前速度 = 速度
             float curspeed = speed;
 
+            // 判斷(按鍵↑) 當前速度變2倍
             if (Input.GetKey(KeyCode.UpArrow))
                 curspeed *= 2;
 
+            // 第一個身體部位.位移(第一個身體部位.前方 * 當前速度 * 時間.平滑增量時間, 空間.世界);
             BodyParts[0].Translate(BodyParts[0].forward * curspeed * Time.smoothDeltaTime, Space.World);
 
+            // 判斷 按鍵.獲取坐標軸("水平座標" != 0)
+            //  第一個身體部位.旋轉(3位元向量.上方 * 旋轉速度 * 時間.間隔時間 * 按鍵.獲取坐標軸("水平座標"));
             if (Input.GetAxis("Horizontal") != 0)
                 BodyParts[0].Rotate(Vector3.up * rotationspeed * Time.deltaTime * Input.GetAxis("Horizontal"));
 
@@ -79,6 +123,19 @@ namespace Lancelot
             newpart.SetParent(transform);
 
             BodyParts.Add(newpart);
+
+            CurrentScore.text = "Score: " + (BodyParts.Count - beginsize).ToString();
+        }
+
+        public void DIE()
+        {
+            IsAlive = false;
+
+            ScoreText.text = "Your score was" + (BodyParts.Count - beginsize).ToString();
+
+            CurrentScore.gameObject.SetActive(false);
+
+            DeadScreen.SetActive(true);
         }
     }
 }
