@@ -34,7 +34,10 @@ namespace Lancelot
         // Update is called once per frame
         void Update()
         {
+            Move();
 
+            if (Input.GetKey(KeyCode.Q))
+                AddBodyPart();
         }
 
         public void Move()
