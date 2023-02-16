@@ -9,6 +9,8 @@ namespace Lancelot
 
         public SnakeMovement movement;
 
+        public SpawnObject SO;
+
         void OnCollisionEnter(Collision col)
         {
             if(col.gameObject.tag == "Food")
@@ -18,6 +20,15 @@ namespace Lancelot
                 Destroy(col.gameObject);
 
                 // spawnfood
+                SO.SpawnFood();
+            }
+            else
+            {
+                if(col.transform != movement.BodyParts[1]&& movement.IsAlive)
+                {
+                    if (Time.time - movement.TimeFromLastRetry > 5)
+                        movement.DIE();
+                }
             }
         }
     }
