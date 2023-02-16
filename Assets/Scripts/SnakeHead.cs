@@ -6,9 +6,19 @@ namespace Lancelot
 {
     public class SnakeHead : MonoBehaviour
     {
-        private void OnCollisionEnter(Collision collision)
+
+        public SnakeMovement movement;
+
+        void OnCollisionEnter(Collision col)
         {
-            
+            if(col.gameObject.tag == "Food")
+            {
+                movement.AddBodyPart();
+
+                Destroy(col.gameObject);
+
+                // spawnfood
+            }
         }
     }
 }
