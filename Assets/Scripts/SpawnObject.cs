@@ -6,6 +6,8 @@ namespace Lancelot
     public class SpawnObject : MonoBehaviour
     {
 
+        public GameObject Foodprefab;
+
         public Vector3 center;
         public Vector3 size;
 
