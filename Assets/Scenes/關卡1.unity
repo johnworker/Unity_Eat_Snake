@@ -2399,7 +2399,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 1496421926}
-  SO: {fileID: 553460162}
+  SpaO: {fileID: 553460162}
 --- !u!54 &1911177921
 Rigidbody:
   m_ObjectHideFlags: 0

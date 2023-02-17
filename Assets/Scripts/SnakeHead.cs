@@ -9,7 +9,7 @@ namespace Lancelot
 
         public SnakeMovement movement;
 
-        public SpawnObject SO;
+        public SpawnObject SpaO;
 
         void OnCollisionEnter(Collision col)
         {
@@ -20,7 +20,7 @@ namespace Lancelot
                 Destroy(col.gameObject);
 
                 // spawnfood
-                SO.SpawnFood();
+                SpaO.SpawnFood();
             }
             else
             {
