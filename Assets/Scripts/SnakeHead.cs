@@ -26,7 +26,7 @@ namespace Lancelot
             {
                 if(col.transform != movement.BodyParts[1]&& movement.IsAlive)
                 {
-                    if (Time.time - movement.TimeFromLastRetry > 5)
+                    if (Time.time - movement.TimeFromLastRetry > 100)
                         movement.DIE();
                 }
             }

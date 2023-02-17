@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 180210717}
   - component: {fileID: 180210719}
   - component: {fileID: 180210718}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,7 +433,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 270642895}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2.5, z: -29.55}
+  m_LocalPosition: {x: 0, y: 2.5, z: -30.55}
   m_LocalScale: {x: 60, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -655,7 +655,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 389105073}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 29.5, y: 2.5, z: 0}
+  m_LocalPosition: {x: 30.5, y: 2.5, z: 0}
   m_LocalScale: {x: 60, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -766,7 +766,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 490534245}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 2.5, z: 29.5}
+  m_LocalPosition: {x: 0, y: 2.5, z: 30.5}
   m_LocalScale: {x: 60, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -911,8 +911,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Foodprefab: {fileID: 5523264883867335355, guid: 05f408ff0321d5944823b2e6242f8480, type: 3}
-  center: {x: 0, y: 0, z: 0}
-  size: {x: 60, y: 0, z: 60}
+  center: {x: 0, y: 0.25, z: 0}
+  size: {x: 58, y: 0, z: 58}
 --- !u!1 &600663013
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,7 +922,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 600663014}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: DeadScreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -962,7 +962,7 @@ GameObject:
   - component: {fileID: 883624449}
   - component: {fileID: 883624448}
   - component: {fileID: 883624450}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: CurrentScore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1113,7 +1113,7 @@ GameObject:
   - component: {fileID: 987499201}
   - component: {fileID: 987499200}
   - component: {fileID: 987499199}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1427,7 +1427,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1115907716}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -29.5, y: 2.5, z: 0}
+  m_LocalPosition: {x: -30.5, y: 2.5, z: 0}
   m_LocalScale: {x: 60, y: 1, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1521,7 +1521,7 @@ GameObject:
   - component: {fileID: 1216359772}
   - component: {fileID: 1216359774}
   - component: {fileID: 1216359773}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: YouAreDeadText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1749,7 +1749,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1309433845}
   - component: {fileID: 1309433847}
-  - component: {fileID: 1309433846}
   m_Layer: 0
   m_Name: UICamera
   m_TagString: Untagged
@@ -1773,14 +1772,6 @@ Transform:
   m_Father: {fileID: 994061420}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &1309433846
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1309433844}
-  m_Enabled: 1
 --- !u!20 &1309433847
 Camera:
   m_ObjectHideFlags: 0
@@ -1835,7 +1826,7 @@ GameObject:
   - component: {fileID: 1415745776}
   - component: {fileID: 1415745778}
   - component: {fileID: 1415745777}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2117,7 +2108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BodyParts:
   - {fileID: 1911177916}
-  mindistance: 0.25
+  mindistance: 0.8
   beginsize: 5
   speed: 1
   rotationspeed: 50
@@ -2317,7 +2308,7 @@ GameObject:
   - component: {fileID: 1900416171}
   - component: {fileID: 1900416173}
   - component: {fileID: 1900416172}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: BackGround
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2408,7 +2399,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movement: {fileID: 1496421926}
-  SO: {fileID: 0}
+  SO: {fileID: 553460162}
+--- !u!54 &1911177921
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911177915}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &2020766421
 GameObject:
   m_ObjectHideFlags: 0
@@ -2467,15 +2474,15 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2029497508}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: -15}
+  m_LocalRotation: {x: 0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalPosition: {x: 0, y: 50, z: -35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 994061420}
   m_Father: {fileID: 553460160}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 60, y: 0, z: 0}
 --- !u!1 &2110738599
 GameObject:
   m_ObjectHideFlags: 0
@@ -2488,7 +2495,7 @@ GameObject:
   - component: {fileID: 2110738603}
   - component: {fileID: 2110738602}
   - component: {fileID: 2110738601}
-  m_Layer: 0
+  m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2559,7 +2566,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2110738602}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1496421926}
+        m_TargetAssemblyTypeName: Lancelot.SnakeMovement, Assembly-CSharp
+        m_MethodName: StartLevel
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2110738602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2609,6 +2628,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bodypart_head
       objectReference: {fileID: 0}
+    - target: {fileID: 2273342638317814337, guid: d525e88e1c968734fb2bd8933adf7cfc, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 2273342638317814342, guid: d525e88e1c968734fb2bd8933adf7cfc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -2652,6 +2675,10 @@ PrefabInstance:
     - target: {fileID: 2273342638317814342, guid: d525e88e1c968734fb2bd8933adf7cfc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2273342638317814343, guid: d525e88e1c968734fb2bd8933adf7cfc, type: 3}
+      propertyPath: m_Radius
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d525e88e1c968734fb2bd8933adf7cfc, type: 3}
