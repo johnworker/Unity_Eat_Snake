@@ -92,15 +92,18 @@ namespace Lancelot
             BodyParts[0].Translate(BodyParts[0].forward * curspeed * Time.smoothDeltaTime, Space.World);
 
             // 判斷 按鍵.獲取坐標軸("水平座標" != 0)
-            //  第一個身體部位.旋轉(3位元向量.上方 * 旋轉速度 * 時間.間隔時間 * 按鍵.獲取坐標軸("水平座標"));
+            //  第一個身體部位.旋轉(3維向量.上方 * 旋轉速度 * 時間.間隔時間 * 按鍵.獲取坐標軸("水平座標"));
             if (Input.GetAxis("Horizontal") != 0)
                 BodyParts[0].Rotate(Vector3.up * rotationspeed * Time.deltaTime * Input.GetAxis("Horizontal"));
 
+            // 迴圈(整數 變數=1; 變數<身體部位(複).數量; 變數增加) 
             for (int i = 1; i < BodyParts.Count; i++)
             {
+                // 當前身體部位 = 身體部位(複)[變數];
                 curBodyPart = BodyParts[i];
+                // 前一個身體部位 = 身體部位(複)[變數 - 1];
                 PrevBodyPart = BodyParts[i - 1];
-
+                // 定義距離 = 3維向量.距離(前段身體部位.位置, 當前身體部位.位置)
                 dis = Vector3.Distance(PrevBodyPart.position, curBodyPart.position);
 
                 Vector3 newpos = PrevBodyPart.position;
