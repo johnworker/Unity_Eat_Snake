@@ -36,7 +36,7 @@ namespace Lancelot
 
         void Start()
         {
-            StartLevel();            
+            StartLevel();
         }
 
         void Update()
