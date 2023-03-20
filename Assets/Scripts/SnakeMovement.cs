@@ -115,6 +115,7 @@ namespace Lancelot
                 // 新位置.y = 身體第一個部位.位置.y軸
                 newpos.y = BodyParts[0].position.y;
 
+                // 福點數 T(變數) = 時間(類別).時間間隔 * 定義距離 / 身體之間的距離 * 定義當前速度
                 float T = Time.deltaTime * dis / mindistance * curspeed;
 
                 if (T > 0.5f)
