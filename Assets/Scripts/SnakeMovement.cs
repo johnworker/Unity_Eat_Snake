@@ -10,14 +10,17 @@ namespace Lancelot
     {
 
         public List<Transform> BodyParts = new List<Transform>();
-
+        [Header("身體之間的距離")]
         public float mindistance = 0.25f;
-
+        [Header("除了頭之外的起始長度")]
         public int beginsize;
 
+        [Header("移動速度")]
         public float speed = 1;
+        [Header("旋轉速度")]
         public float rotationspeed = 50;
 
+        [Header ("上次重試時間")]
         public float TimeFromLastRetry;
 
         public GameObject bodyprefab;
@@ -106,8 +109,10 @@ namespace Lancelot
                 // 定義距離 = 3維向量.距離(前段身體部位.位置, 當前身體部位.位置)
                 dis = Vector3.Distance(PrevBodyPart.position, curBodyPart.position);
 
+                // 3維向量 新位置 = 身體前一個部分.位置
                 Vector3 newpos = PrevBodyPart.position;
 
+                // 新位置.y = 身體第一個部位.位置.y軸
                 newpos.y = BodyParts[0].position.y;
 
                 float T = Time.deltaTime * dis / mindistance * curspeed;
