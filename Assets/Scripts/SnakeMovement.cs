@@ -23,17 +23,25 @@ namespace Lancelot
         [Header ("上次重試時間")]
         public float TimeFromLastRetry;
 
+        [Header("身體物件欲置物")]
         public GameObject bodyprefab;
 
+        [Header("當前分數")]
         public TextMeshProUGUI CurrentScore;
+        [Header("分數文字")]
         public TextMeshProUGUI ScoreText;
 
+        [Header("死亡畫面")]
         public GameObject DeadScreen;
 
+        [Header("福點數 距離")]
         private float dis;
+        [Header("當前身體部位")]
         private Transform curBodyPart;
+        [Header("前一個身體部位")]
         private Transform PrevBodyPart;
 
+        [Header("是否存活")]
         public bool IsAlive;
 
 
@@ -44,44 +52,61 @@ namespace Lancelot
 
         void Update()
         {
+            // 如果(活著)呼叫移動方法
             if (IsAlive)
                 Move();
 
+            // 如果(按鍵盤Q)增加身體方法
             if (Input.GetKey(KeyCode.Q))
                 AddBodyPart();
         }
 
+        // 開始等級方法
         public void StartLevel()
         {
+            // 上次重試時間 = 時間類別.時間
             TimeFromLastRetry = Time.time;
 
+            // 死亡畫面.設置(關閉);
             DeadScreen.SetActive(false);
 
+            // 迴圈(整數 i(變數) = 身體部分(複數).計數 - 1; i(變數) > 1; i(變數)--)
             for (int i = BodyParts.Count - 1; i > 1; i--)
             {
+                // 摧毀(身體部分(複數)[i(變數)].遊戲物件);
                 Destroy(BodyParts[i].gameObject);
 
+                // 身體部分(複數).移除(身體部分(複數)[i(變數)]);
                 BodyParts.Remove(BodyParts[i]);
             }
 
+            // 身體部分(複數)[第一位].位置 = 新 3維向量(座標);
             BodyParts[0].position = new Vector3(0, 0.5f, 0);
 
+            // 身體部分(複數)[第一位].旋轉 = 四元數.零度角;
             BodyParts[0].rotation = Quaternion.identity;
 
+            // 當前分數.遊戲物件.設置(開啟);
             CurrentScore.gameObject.SetActive(true);
 
+            // 當前分數.文字 = "分數: 0";
             CurrentScore.text = "Score: 0";
 
+            // 存活 = 是;
             IsAlive = true;
 
+            // 迴圈(整數 i(變數) = 0; i(變數) < 起始身體大小; i(變數)++)
             for (int i = 0; i < beginsize; i++)
             {
+                // 呼叫增加身體部分方法();
                 AddBodyPart();
             }
 
+            // 身體部分(複數)[第一位].位置 = 新 3維向量(座標);
             BodyParts[0].position = new Vector3(2, 0.5f, 0);
         }
 
+        // 移動方法
         public void Move()
         {
             // 定義 當前速度 = 速度
@@ -118,32 +143,46 @@ namespace Lancelot
                 // 福點數 T(變數) = 時間(類別).時間間隔 * 定義距離 / 身體之間的距離 * 定義當前速度
                 float T = Time.deltaTime * dis / mindistance * curspeed;
 
+                // 如果 (T(變數) > 0.5f)
+                // T(變數) = 0.5f;
                 if (T > 0.5f)
                     T = 0.5f;
+
+                // 當前身體部位.位置 = 3維向量.球形插值(當前身體部位.位置, 新位置, T(變數))
                 curBodyPart.position = Vector3.Slerp(curBodyPart.position, newpos, T);
+                // 當前身體部位.旋轉 = 四元數.球形插值(當前身體部位.旋轉, 前一個身體部位.旋轉, T(變數))
                 curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, PrevBodyPart.rotation, T);
             }
         }
 
+        // 增加身體部分方法
         public void AddBodyPart()
         {
+            // 轉換 新部分(變數) = (生成 (身體欲置物, 身體部分(複數)[身體部分(複數).計數 - 1].位置,  身體部分(複數)[身體部分(複數).計數 - 1].旋轉) 作為 遊戲物件).轉換;
             Transform newpart = (Instantiate(bodyprefab, BodyParts[BodyParts.Count - 1].position, BodyParts[BodyParts.Count - 1].rotation) as GameObject).transform;
-
+            // 新部分(變數).設置父物件(轉換);
             newpart.SetParent(transform);
 
+            // 身體部分(複數).增加(新部分(變數));
             BodyParts.Add(newpart);
 
+            // 當前分數.文字 = "分數:" + (身體部分(複數).計數 - 起始身體大小).轉換字串();
             CurrentScore.text = "Score: " + (BodyParts.Count - beginsize).ToString();
         }
 
+        // 死亡方法
         public void DIE()
         {
+            // 存活 = 否
             IsAlive = false;
 
+            // 分數文字.文字 = "你的分數是" + (身體部分(複數).計數 - 起始身體大小).轉換字串();
             ScoreText.text = "Your score was" + (BodyParts.Count - beginsize).ToString();
 
+            // 當前分數.遊戲物件.設置(關閉);
             CurrentScore.gameObject.SetActive(false);
 
+            // 死亡畫面.設置(開啟);
             DeadScreen.SetActive(true);
         }
     }
