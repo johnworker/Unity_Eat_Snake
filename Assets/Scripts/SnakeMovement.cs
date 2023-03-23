@@ -16,7 +16,7 @@ namespace Lancelot
         public int beginsize;
 
         [Header("移動速度")]
-        public float speed = 1;
+        public float speed = 3;
         [Header("旋轉速度")]
         public float rotationspeed = 50;
 
@@ -116,7 +116,7 @@ namespace Lancelot
             if (Input.GetKey(KeyCode.UpArrow))
                 curspeed *= 2;
 
-            // 第一個身體部位.位移(第一個身體部位.前方 * 當前速度 * 時間.平滑增量時間, 空間.世界);
+            // 第一個身體部位.位移(第一個身體部位.前方 * 當前速度 * 時間.平滑增量時間, 空間.世界 Space.World);
             BodyParts[0].Translate(BodyParts[0].forward * curspeed * Time.smoothDeltaTime, Space.World);
 
             // 判斷 按鍵.獲取坐標軸("水平座標" != 0)
@@ -152,6 +152,8 @@ namespace Lancelot
                 curBodyPart.position = Vector3.Slerp(curBodyPart.position, newpos, T);
                 // 當前身體部位.旋轉 = 四元數.球形插值(當前身體部位.旋轉, 前一個身體部位.旋轉, T(變數))
                 curBodyPart.rotation = Quaternion.Slerp(curBodyPart.rotation, PrevBodyPart.rotation, T);
+
+                Physics.IgnoreLayerCollision(6, 6);
             }
         }
 
